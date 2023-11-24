@@ -8,13 +8,26 @@
     color: rgba(0, 40, 37, 0.907);
 }
 
-.Main-Section h1 {
+.section-card-container h1 {
     padding: 10%;
     padding-bottom: 0;
     font-size: 100px;
+    white-space: nowrap;
 }
 
-.Main-Section p {
+.section-card-container p {
     margin-left : 10%;
     font-size: 35px;
+}
+
+.section-card-container {
+    margin: auto;
+    margin-left: 10%;
+    border-radius: 15px;
+    background: linear-gradient(transparent 2% , white 100%);
+    box-shadow:  20px 20px 60px #121212,
+                -20px -20px 60px transparent;
+    height: fit-content;
+    width: max-content;
+    padding: 2%;
 }

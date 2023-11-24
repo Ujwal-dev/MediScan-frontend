@@ -1,0 +1,102 @@
+.service-section{
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    color: rgba(0, 40, 37, 0.907);    
+}
+.service-card-container h3 {
+    margin: 0%;
+    font-size: 100px;
+    white-space: nowrap;
+}
+
+.service-card-container p {
+    margin-left : 10%;
+    font-size: 35px;
+}
+.service-card-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: #121212;
+    margin: 10%;
+    border-radius: 15px;
+    border-style: solid;
+    background: linear-gradient( #407177 10% , transparent 100% );
+    border-width: large;
+    height: fit-content;
+    width: max-content;
+    padding: 5%;
+    transform:translate(ease);
+}
+
+.service-card-container:hover{
+    box-shadow: 20px  20px 60px black,
+               -20px -20px 60px transparent;
+}
+
+.service-btn {
+    background-color: transparent;
+    border: 2px solid #000;
+    border-radius: 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 1.25em 2em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+    transition: all 0.3s ease-in-out;
+    user-select: none;
+    font-size: 13px;
+   }
+   
+   .service-btn::before {
+    content: " ";
+    width: 1.5625rem;
+    height: 2px;
+    background: black;
+    top: 50%;
+    left: 1.5em;
+    position: absolute;
+    transform: translateY(-50%);
+    transform-origin: center;
+    transition: background 0.3s linear, width 0.3s linear;
+   }
+   
+   .service-btn .text {
+    font-size: 1.125em;
+    line-height: 1.33333em;
+    padding-left: 2em;
+    display: block;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: black;
+   }
+   
+   .service-btn:hover {
+    color: white;
+    background: black;
+   }
+   
+   .service-btn:hover::before {
+    width: 0.9375rem;
+    background: white;
+   }
+   
+   .service-btn:hover .text {
+    color: white;
+    padding-left: 1.5em;
+   }
+   
