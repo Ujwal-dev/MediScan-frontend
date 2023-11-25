@@ -1,9 +1,6 @@
 .Main-Section{
     display: flex;
     flex-direction: column;
-    background-image: url("./bg.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
     height: 90vh;
     color: rgba(0, 40, 37, 0.907);
 }
