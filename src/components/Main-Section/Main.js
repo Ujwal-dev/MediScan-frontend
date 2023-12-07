@@ -4,7 +4,7 @@ import "./Main.css"
 function Main() {
   return (
     <div className='Main-Section'>
-      <div class="section-card-container">
+      <div class="main-section-card-container">
         <h1> MEDI-SCAN</h1>
         <p> A universal medical report analysis platform.</p>
       </div>

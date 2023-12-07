@@ -5,25 +5,26 @@
     color: rgba(0, 40, 37, 0.907);
 }
 
-.section-card-container h1 {
+.main-section-card-container h1 {
     padding: 10%;
     padding-bottom: 0;
     font-size: 100px;
     white-space: nowrap;
 }
 
-.section-card-container p {
+.main-section-card-container p {
     margin-left : 10%;
     font-size: 35px;
 }
 
-.section-card-container {
+.main-section-card-container {
     margin: auto;
     margin-left: 10%;
-    border-radius: 15px;
-    background: linear-gradient(transparent 2% , white 100%);
-    box-shadow:  20px 20px 60px #121212,
-                -20px -20px 60px transparent;
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 5px;
+    border-image-source: linear-gradient(to bottom, cadetblue, #01595b );
+    background: white;
     height: fit-content;
     width: max-content;
     padding: 2%;

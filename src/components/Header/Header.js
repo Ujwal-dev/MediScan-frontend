@@ -1,6 +1,7 @@
 import React from 'react'
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import "./Header.css"
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
@@ -21,9 +22,9 @@ function Header() {
             </NavDropdown>
         </div>
         <span className='header--span'>
-            <a href="#">Login</a>
+            <Link to="/login">Login</Link>
             /
-            <a href="#">Register</a>
+            <Link to="/register">Register</Link>
         </span>
     </header>
   )
