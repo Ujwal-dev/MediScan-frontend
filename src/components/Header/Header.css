@@ -20,6 +20,9 @@
     font-size: 28px;
     margin-right: auto;
 }
+.header--title:hover {
+    cursor: pointer;
+}
 
 .header span {
     position: relative;

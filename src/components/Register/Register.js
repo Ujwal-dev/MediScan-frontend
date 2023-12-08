@@ -1,8 +1,37 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
+import { useState } from "react";
+import axios from "axios";
 
 export default function Register() {
+  const [user, setUser] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const [errorMsg, setErrorMsg] = useState("");
+  const [success , setSuccess] = useState(false)
+  const dest="https://mediscan-backend.onrender.com/register"
+  const onInputChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  const registerUser = async (e) => {
+    
+    e.preventDefault();
+    try {
+      const response = await axios.post(dest, user);
+      console.log("Registration Successful:", response.data);
+      setErrorMsg(response.data);
+      setSuccess(true)
+    } catch (error) {
+      setSuccess(false)
+      setErrorMsg(error.response.data);
+    }
+  };
   return (
     <div>
       <Header />
@@ -14,7 +43,7 @@ export default function Register() {
           <div className="text-sm font-normal mb-4 text-center text-[#1e0e4b]">
             Register to access our services.
           </div>
-          <form className="flex flex-col gap-3">
+          <form onSubmit={registerUser} className="flex flex-col gap-3">
             <div className="block relative">
               <label
                 for="username"
@@ -25,6 +54,8 @@ export default function Register() {
               <input
                 type="text"
                 id="username"
+                name="username"
+                onChange={onInputChange}
                 className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-offset-2  ring-gray-900 outline-0"
               />
             </div>
@@ -38,6 +69,8 @@ export default function Register() {
               <input
                 type="text"
                 id="email"
+                name="email"
+                onChange={onInputChange}
                 className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-offset-2  ring-gray-900 outline-0"
               />
             </div>
@@ -49,8 +82,10 @@ export default function Register() {
                 Password
               </label>
               <input
-                type="text"
+                type="password"
                 id="password"
+                name="password"
+                onChange={onInputChange}
                 className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-offset-2 ring-gray-900 outline-0"
               />
             </div>
@@ -62,12 +97,16 @@ export default function Register() {
                 Confirm Password
               </label>
               <input
-                type="text"
-                id="check-password"
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                onChange={onInputChange}
                 className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-offset-2 ring-gray-900 outline-0"
               />
             </div>
-            <div></div>
+            <div className={"text-sm font-normal mb-4 text-center text-["+(success ? "cadetblue" : "red")+"]"}>
+              {errorMsg}
+            </div>
             <button
               type="submit"
               className="bg-[cadetblue] w-max m-auto px-6 py-2 rounded text-white text-sm font-normal"
