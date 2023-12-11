@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState , useContext} from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import UserContext  from "../../Contexts/UserContext";
 
 export default function LoginBox() {
 
   const [password , setPassword] = useState('')
   const [email , setEmail] = useState('')
   const [errorMsg , setErrorMsg] = useState('')
+  
+  const {setUsername} = useContext(UserContext);
 
   const dest = "https://mediscan-backend.onrender.com/authenticate"
   const navigate = useNavigate()
@@ -21,6 +24,7 @@ export default function LoginBox() {
       const response = await axios.post(dest, data);
       console.log('Login Successful:', response.data);
       setErrorMsg('')
+      setUsername(data.email)
       navigate("/")
 
       // Handle success (e.g., show a success message, redirect, etc.)

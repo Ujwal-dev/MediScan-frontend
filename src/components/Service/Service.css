@@ -1,41 +1,32 @@
 .service-section{
     display: flex;
     flex-direction: column;
-    height: 90vh;
-    color: rgba(0, 40, 37, 0.907);    
+    gap: 50px; 
+    align-items: center;   
 }
 .service-card-container h3 {
-    margin: 0%;
-    font-size: 100px;
+    margin: 0;
+    font-size: 30px;
     white-space: nowrap;
 }
 
 .service-card-container p {
-    margin-left : 10%;
-    font-size: 35px;
+    margin-left : 0;
+    font-size: 18px;
 }
 .service-card-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: #121212;
-    margin: 10%;
-    border-radius: 50px;
-    border-style: solid;
     background: whitesmoke;
-    border-width: large;
-    height: fit-content;
-    width: max-content;
-    padding: 5%;
+    height: 300px;
+    width: 250px;
+    margin-bottom: 20px;
+    margin-top: 20px;
     transform:translate(ease);
 }
 
-.service-card-container:hover{
-    box-shadow: 20px  20px 60px black,
-               -20px -20px 60px transparent;
-    
-}
 
 .service-btn {
     background-color: transparent;

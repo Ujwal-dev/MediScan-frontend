@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-.App{
-  background-image: url("./bg.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
+#container {
+  /* Set the height of the container to fill the viewport */
+  background: linear-gradient(to bottom, #229c92, #186d67);
+  position: absolute;
+  z-index: -1;
 }
+

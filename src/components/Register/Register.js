@@ -1,12 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
 import { useState } from "react";
 import axios from "axios";
+import "./Register.css"
 
 export default function Register() {
   const [user, setUser] = useState({
-    username: "",
+    uname: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -14,6 +15,8 @@ export default function Register() {
 
   const [errorMsg, setErrorMsg] = useState("");
   const [success , setSuccess] = useState(false)
+
+  const navigate = useNavigate()
   const dest="https://mediscan-backend.onrender.com/register"
   const onInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -27,16 +30,20 @@ export default function Register() {
       console.log("Registration Successful:", response.data);
       setErrorMsg(response.data);
       setSuccess(true)
+      setTimeout(() => {
+        navigate("/registered")
+      },3000)
     } catch (error) {
       setSuccess(false)
       setErrorMsg(error.response.data);
     }
   };
+
   return (
-    <div>
+    <div id="register">
       <Header />
       <div className="h-[max-content] py-[20px] flex items-center justify-center">
-        <div className="w-[450px] h-[fit-content] flex flex-col p-8 px-25 rounded-md text-black bg-white">
+        <div className="w-[350px] h-[fit-content] flex flex-col p-8 px-25 rounded-md text-black bg-white">
           <div className="text-2xl font-bold mb-2 text-[#1e0e4b] text-center">
             <span className="text-[cadetblue]">Register</span>
           </div>
@@ -46,15 +53,15 @@ export default function Register() {
           <form onSubmit={registerUser} className="flex flex-col gap-3">
             <div className="block relative">
               <label
-                for="username"
+                for="uname"
                 className="block text-gray-600 cursor-text text-sm leading-[140%] font-normal mb-2"
               >
                 Username
               </label>
               <input
                 type="text"
-                id="username"
-                name="username"
+                id="uname"
+                name="uname"
                 onChange={onInputChange}
                 className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-offset-2  ring-gray-900 outline-0"
               />

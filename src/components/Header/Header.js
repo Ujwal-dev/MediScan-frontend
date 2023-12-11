@@ -1,12 +1,12 @@
-import React from 'react'
+import React ,{useContext} from 'react'
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import "./Header.css"
+import UserContext from '../../Contexts/UserContext';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Header() {
-
+  const {username} = useContext(UserContext);
   const navigate = useNavigate()
-
   return (
     <header className='header'>
         {/* <Logo></Logo> */}
@@ -25,10 +25,20 @@ function Header() {
             </NavDropdown>
         </div>
         <span className='header--span'>
-            <Link to="/login">Login</Link>
-            /
+      {
+        console.log(username)||
+        username !== "" ? (
+          // Show username if logged in
+          <span>{username}</span>
+        ) : (
+          // Show login/register links if not logged in
+          <>
+            <Link to="/login">Login</Link> /
             <Link to="/register">Register</Link>
-        </span>
+          </>
+        )
+      }
+    </span>
     </header>
   )
 }

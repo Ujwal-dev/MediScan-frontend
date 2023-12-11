@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Header from "../Header/Header";
-import { Link } from "react-router-dom";
-import "./Login.css"
 import LoginBox from "./LoginBox";
+import "./Login.css"
 
 export default function Login() {
+
   return (
-    <div>
+    <div id="login">
       <Header />
       <LoginBox />
     </div>
