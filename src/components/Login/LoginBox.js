@@ -9,7 +9,7 @@ export default function LoginBox() {
   const [email , setEmail] = useState('')
   const [errorMsg , setErrorMsg] = useState('')
   
-  const {setUsername} = useContext(UserContext);
+  const {setUser} = useContext(UserContext);
 
   const dest = "https://mediscan-backend.onrender.com/authenticate"
   const navigate = useNavigate()
@@ -20,11 +20,10 @@ export default function LoginBox() {
         "email" : email,
         "password" : password
       }
-      console.log(data)
       const response = await axios.post(dest, data);
-      console.log('Login Successful:', response.data);
-      setErrorMsg('')
-      setUsername(data.email)
+      setErrorMsg(response.data)
+      setUser(email)
+      localStorage.setItem('user', email);
       navigate("/")
 
       // Handle success (e.g., show a success message, redirect, etc.)
@@ -79,9 +78,9 @@ export default function LoginBox() {
           {errorMsg}
         </div>
           <div>
-            <a className="text-sm text-[cadetblue]" href="#">
+          <Link className="text-sm text-[cadetblue]" to="/register">
               Forgot your password?
-            </a>
+            </Link>
           </div>
           <button
             type="submit"

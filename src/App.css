@@ -5,7 +5,11 @@
 #container {
   /* Set the height of the container to fill the viewport */
   background: linear-gradient(to bottom, #229c92, #186d67);
-  position: absolute;
+  /* position: fixed; */
   z-index: -1;
+}
+
+.particle{
+  opacity: 0.5;
 }
 

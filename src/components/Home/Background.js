@@ -9,14 +9,15 @@ const ParticleAnimation = () => {
 
     const container = document.getElementById("container");
     const w = container.offsetWidth;
-    const h = container.offsetHeight;
+
+    const getRandom = (start , end)=>{ return gsap.utils.random(start, end)}
 
     const createParticle = () => {
       const elem = document.createElement('div');
       elem.className = particleClass;
       container.appendChild(elem);
     
-      const size = gsap.utils.random(20, 50);
+      const size = getRandom(20, 100);
       const randomColor = particleColors[Math.floor(Math.random() * particleColors.length)]; // Select a random color from the particleColors array
     
       // Generate a semi-transparent version of the randomColor for the particle background
@@ -26,7 +27,7 @@ const ParticleAnimation = () => {
         width: size,
         height: size,
         x: gsap.utils.random(0, w),
-        y: gsap.utils.random(0, h) + (h * 0.5),
+        y: window.innerHeight,
         backgroundColor: semiTransparentColor,
         backgroundBlendMode: 'lighten',
         borderColor: randomColor, // Set the border color to the same randomly selected color
@@ -37,28 +38,30 @@ const ParticleAnimation = () => {
     
 
     const animateParticle = (elem) => {
-      gsap.to(elem, gsap.utils.random(2, 10), {
+      const timeOut = getRandom(2,10)
+
+      gsap.to(elem, timeOut, {
         y: "-100%",
         ease: "none",
         repeat: -1,
-        // delay: -10
+        delay: -10
       });
 
-      gsap.to(elem, gsap.utils.random(1, 6), {
+      gsap.to(elem, timeOut, {
         x: "+=50",
         ease: "power1.inOut",
         repeat: -1,
         yoyo: true
       });
 
-      // gsap.to(elem, gsap.utils.random(1, 2), {
+      // gsap.to(elem, timeOut, {
       //   opacity: 0,
       //   ease: "power1.inOut",
       //   repeat: -1,
       //   yoyo: true
       // });
 
-      gsap.to(elem, gsap.utils.random(5, 10), {
+      gsap.to(elem, timeOut, {
         rotate: 360,
         ease: "none",
         repeat: -1,
@@ -70,13 +73,13 @@ const ParticleAnimation = () => {
       createParticle();
     }
 
-    // return () => {
-    //   // Clean up by removing animation elements when the component unmounts
-    //   const particles = document.querySelectorAll('.particle');
-    //   particles.forEach((particle) => {
-    //     particle.parentNode.removeChild(particle);
-    //   });
-    // };
+    return () => {
+      // Clean up by removing animation elements when the component unmounts
+      const particles = document.querySelectorAll('.particle');
+      particles.forEach((particle) => {
+        particle.parentNode.removeChild(particle);
+      });
+    };
   }, []);
 
   return <div id="container" style={{ width: '100%', height: '100vh', position:'fixed'}}></div>;
